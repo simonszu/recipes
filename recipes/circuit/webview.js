@@ -9,10 +9,8 @@ module.exports = Ferdi => {
     const titleValue = document.querySelector('title').text;
     // Extract the number from the tag
     match = titleValue.match(/\d+/);
-    // Some logic to handle the match groups
-    unread = match != null && match.length > 0 ? match[0] : 0;
     // Set unread msgs badge
-    Ferdi.setBadge(Number.parseInt(unread, 10));
+    Ferdi.setBadge(Ferdi.safeParseInt(match[0]));
   };
 
   const loopFunc = () => {
